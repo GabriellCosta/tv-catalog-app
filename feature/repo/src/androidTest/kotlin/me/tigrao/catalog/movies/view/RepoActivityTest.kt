@@ -15,7 +15,7 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flowOf
 import me.tigrao.catalog.movies.R
-import me.tigrao.catalog.movies.domain.model.MoviewListDataModel
+import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.presentation.PagerProvider
 import me.tigrao.catalog.movies.presentation.MoviewListViewModel
 import me.tigrao.catalog.movies.presentation.StateViewFactory
@@ -90,12 +90,12 @@ class RepoActivityTest {
         assertEquals(RepoEvent.TryAgain, viewModel.event.value)
     }
 
-    private fun createList(): List<MoviewListDataModel> {
-        val list = mutableListOf<MoviewListDataModel>()
+    private fun createList(): List<MovieListDataModel> {
+        val list = mutableListOf<MovieListDataModel>()
 
         repeat(10) {
-            val item = MoviewListDataModel(
-                avatar = "http://google.com.br",
+            val item = MovieListDataModel(
+                image = "http://google.com.br",
                 title = "mock title",
                 author = "authro mock",
                 31,
@@ -110,7 +110,7 @@ class RepoActivityTest {
     }
 
     private fun prepare(
-        list: List<MoviewListDataModel> = createList()
+        list: List<MovieListDataModel> = createList()
     ) {
         every { pagerProvider.providePager() } returns flowOf(PagingData.from(list))
 

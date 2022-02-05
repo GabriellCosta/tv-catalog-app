@@ -1,14 +1,14 @@
 package me.tigrao.catalog.movies.view.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import me.tigrao.catalog.movies.domain.model.MoviewListDataModel
+import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 
-internal class MovieListDiffConfig : DiffUtil.ItemCallback<MoviewListDataModel>() {
-    override fun areItemsTheSame(oldItem: MoviewListDataModel, newItem: MoviewListDataModel): Boolean {
+internal class MovieListDiffConfig : DiffUtil.ItemCallback<MovieListDataModel>() {
+    override fun areItemsTheSame(oldItem: MovieListDataModel, newItem: MovieListDataModel): Boolean {
         return oldItem.title == newItem.title
     }
 
-    override fun areContentsTheSame(oldItem: MoviewListDataModel, newItem: MoviewListDataModel): Boolean {
+    override fun areContentsTheSame(oldItem: MovieListDataModel, newItem: MovieListDataModel): Boolean {
         return oldItem == newItem
     }
 }

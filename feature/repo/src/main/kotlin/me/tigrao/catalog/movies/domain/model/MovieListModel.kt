@@ -1,14 +1,12 @@
 package me.tigrao.catalog.movies.domain.model
 
 internal data class MovieListModel(
-    val data: List<MoviewListDataModel>,
+    val data: List<MovieListDataModel>,
 )
 
-internal data class MoviewListDataModel(
-    val avatar: String,
+internal data class MovieListDataModel(
+    val image: String,
     val title: String,
     val author: String,
-    val stars: Int,
-    val forks: Int,
     val description: String
 )

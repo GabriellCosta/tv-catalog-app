@@ -3,7 +3,7 @@ package me.tigrao.catalog.movies.domain
 import me.tigrao.catalog.movies.data.api.model.OwnerResponse
 import me.tigrao.catalog.movies.data.api.model.MovieListResponse
 import me.tigrao.catalog.movies.data.api.model.MovieListItemResponse
-import me.tigrao.catalog.movies.domain.model.MoviewListDataModel
+import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
 import org.junit.Assert.*
 import org.junit.Test
@@ -35,8 +35,8 @@ class FetchMovieListSuccessMapperTest {
 
         val expected = MovieListModel(
             data = listOf(
-                MoviewListDataModel(
-                    avatar = "http://google.com",
+                MovieListDataModel(
+                    image = "http://google.com",
                     title = "mock-name",
                     author = "mock name",
                     stars = 445,
@@ -72,8 +72,8 @@ class FetchMovieListSuccessMapperTest {
 
         val expected = MovieListModel(
             data = listOf(
-                MoviewListDataModel(
-                    avatar = "http://google.com",
+                MovieListDataModel(
+                    image = "http://google.com",
                     title = "mock-name",
                     author = "mock name",
                     stars = 445,
