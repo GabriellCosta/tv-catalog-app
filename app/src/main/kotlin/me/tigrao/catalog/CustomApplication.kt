@@ -3,7 +3,7 @@ package me.tigrao.catalog
 import android.app.Application
 import com.github.terrakok.cicerone.Cicerone
 import dev.tigrao.catalog.infra.network.di.networkImplModule
-import me.tigrao.catalog.movies.repoModule
+import me.tigrao.catalog.movies.movieListModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -16,7 +16,7 @@ class CustomApplication : Application() {
             // Android context
             androidContext(this@CustomApplication)
             // modules
-            modules(repoModule)
+            modules(movieListModule)
             modules(networkImplModule)
             modules(appModule)
         }

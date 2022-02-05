@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import me.tigrao.catalog.movies.databinding.ItemNetworkStateBinding
 
 internal class RepoLoadStateAdapter(
-    private val adapter: RepoAdapter
+    private val adapter: MoviewListAdapter
 ) :
     LoadStateAdapter<RepoLoadStateAdapter.NetworkStateItemViewHolder>() {
 

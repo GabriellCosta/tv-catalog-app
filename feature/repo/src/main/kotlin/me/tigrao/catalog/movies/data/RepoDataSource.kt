@@ -2,26 +2,26 @@ package me.tigrao.catalog.movies.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import me.tigrao.catalog.movies.domain.FetchRepositoryParameters
-import me.tigrao.catalog.movies.domain.FetchRepositoryUseCase
-import me.tigrao.catalog.movies.domain.model.RepositoryDataModel
+import me.tigrao.catalog.movies.domain.FetchMovieListParameters
+import me.tigrao.catalog.movies.domain.FetchMovieListUseCase
+import me.tigrao.catalog.movies.domain.model.MoviewListDataModel
 
 internal class RepoDataSource(
-    private val fetchRepositoryUseCase: FetchRepositoryUseCase,
+    private val fetchRepositoryUseCase: FetchMovieListUseCase,
     private val repositoryErrorModelToUiMapper: RepositoryErrorModelToUiMapper,
-) : PagingSource<Int, RepositoryDataModel>() {
+) : PagingSource<Int, MoviewListDataModel>() {
 
-    override fun getRefreshKey(state: PagingState<Int, RepositoryDataModel>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, MoviewListDataModel>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, RepositoryDataModel> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MoviewListDataModel> {
         val nextPageNumber = params.key ?: 1
 
-        val parameters = FetchRepositoryParameters(
+        val parameters = FetchMovieListParameters(
             language = "kotlin",
             sort = "",
             page = nextPageNumber,

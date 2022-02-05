@@ -1,24 +1,24 @@
 package me.tigrao.catalog.movies.domain
 
 import me.tigrao.catalog.movies.data.api.model.OwnerResponse
-import me.tigrao.catalog.movies.data.api.model.RepositoriesResponse
-import me.tigrao.catalog.movies.data.api.model.RepositoryItemResponse
-import me.tigrao.catalog.movies.domain.model.RepositoryDataModel
-import me.tigrao.catalog.movies.domain.model.RepositoryModel
+import me.tigrao.catalog.movies.data.api.model.MovieListResponse
+import me.tigrao.catalog.movies.data.api.model.MovieListItemResponse
+import me.tigrao.catalog.movies.domain.model.MoviewListDataModel
+import me.tigrao.catalog.movies.domain.model.MovieListModel
 import org.junit.Assert.*
 import org.junit.Test
 
-class FetchRepositorySuccessMapperTest {
+class FetchMovieListSuccessMapperTest {
 
-    private val subject = FetchRepositorySuccessMapper()
+    private val subject = FetchMovieListSuccessMapper()
 
     @Test
     fun subject_withAllParameter_returnCorrect() {
         val result = subject.mapFrom(
-            from = RepositoriesResponse(
+            from = MovieListResponse(
                 totalCount = 1,
                 items = listOf(
-                    RepositoryItemResponse(
+                    MovieListItemResponse(
                         id = 13,
                         name = "mock-name",
                         description = "mock-description",
@@ -33,9 +33,9 @@ class FetchRepositorySuccessMapperTest {
             )
         )
 
-        val expected = RepositoryModel(
+        val expected = MovieListModel(
             data = listOf(
-                RepositoryDataModel(
+                MoviewListDataModel(
                     avatar = "http://google.com",
                     title = "mock-name",
                     author = "mock name",
@@ -52,10 +52,10 @@ class FetchRepositorySuccessMapperTest {
     @Test
     fun subject_withNullDescriptionParameter_returnCorrect() {
         val result = subject.mapFrom(
-            from = RepositoriesResponse(
+            from = MovieListResponse(
                 totalCount = 1,
                 items = listOf(
-                    RepositoryItemResponse(
+                    MovieListItemResponse(
                         id = 13,
                         name = "mock-name",
                         description = null,
@@ -70,9 +70,9 @@ class FetchRepositorySuccessMapperTest {
             )
         )
 
-        val expected = RepositoryModel(
+        val expected = MovieListModel(
             data = listOf(
-                RepositoryDataModel(
+                MoviewListDataModel(
                     avatar = "http://google.com",
                     title = "mock-name",
                     author = "mock name",

@@ -13,12 +13,12 @@ import kotlinx.coroutines.launch
 import me.tigrao.catalog.infra.action.dispatcher.ViewAction
 import me.tigrao.catalog.movies.R
 import me.tigrao.catalog.movies.databinding.FragmentMovieListBinding
-import me.tigrao.catalog.movies.presentation.RepoViewModel
+import me.tigrao.catalog.movies.presentation.MoviewListViewModel
 import me.tigrao.catalog.movies.presentation.model.RepoAction
 import me.tigrao.catalog.movies.presentation.model.RepoEvent
 import me.tigrao.catalog.movies.presentation.model.RepoSate
 import me.tigrao.catalog.movies.view.adapter.LayoutManagerFactory
-import me.tigrao.catalog.movies.view.adapter.RepoAdapter
+import me.tigrao.catalog.movies.view.adapter.MoviewListAdapter
 import me.tigrao.catalog.movies.view.adapter.RepoLoadStateAdapter
 import me.tigrao.tv.catalog.designsystem.viewstate.StateViewActionDispatcher
 import org.koin.android.ext.android.inject
@@ -28,8 +28,8 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list), StateViewActio
 
     private val binder by viewBinding(FragmentMovieListBinding::bind)
 
-    private val viewModel: RepoViewModel by viewModel()
-    private val repoAdapter by inject<RepoAdapter>()
+    private val viewModel: MoviewListViewModel by viewModel()
+    private val repoAdapter by inject<MoviewListAdapter>()
     private val layoutMangerFactory by inject<LayoutManagerFactory>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
