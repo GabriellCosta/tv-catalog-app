@@ -41,6 +41,9 @@ dependencies {
     implementation(projects.feature.repo)
     implementation(projects.infra.network.impl)
     implementation(projects.infra.network.public)
+    implementation dependencies.Dependencies.appCompat
+    implementation dependencies.Dependencies.coreKTX
+    implementation dependencies.Dependencies.Navigation.ciceroni
 
     implementation(dependencies.Dependencies.okhttpLogger)
 }

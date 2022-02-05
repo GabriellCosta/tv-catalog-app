@@ -91,6 +91,12 @@ object Dependencies {
         const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     }
 
+    object Navigation {
+        private const val VERSION = "7.1"
+
+        const val ciceroni = "com.github.terrakok:cicerone:$VERSION"
+    }
+
     object Kirich {
         private const val VERSION = "1.5.3"
 

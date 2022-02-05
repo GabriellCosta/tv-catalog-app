@@ -1,8 +1,9 @@
 package me.tigrao.catalog
 
 import android.app.Application
+import com.github.terrakok.cicerone.Cicerone
 import dev.tigrao.catalog.infra.network.di.networkImplModule
-import me.tigrao.catalog.repo.repoModule
+import me.tigrao.catalog.movies.repoModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -19,5 +20,11 @@ class CustomApplication : Application() {
             modules(networkImplModule)
             modules(appModule)
         }
+    }
+
+    private fun prepareNavigation() {
+        val cicerone = Cicerone.create()
+        val router = cicerone.router
+        val navHolder = cicerone.getNavigatorHolder()
     }
 }
