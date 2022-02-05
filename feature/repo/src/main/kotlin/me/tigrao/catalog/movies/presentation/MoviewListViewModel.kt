@@ -11,7 +11,7 @@ import me.tigrao.catalog.movies.presentation.model.RepoAction
 import me.tigrao.catalog.movies.presentation.model.RepoEvent
 import me.tigrao.catalog.movies.presentation.model.RepoSate
 
-internal class RepoViewModel(
+internal class MoviewListViewModel(
     pagerProvider: PagerProvider,
     private val stateViewFactory: StateViewFactory,
 ) : ViewModel(), ActionDispatcher<RepoAction> {

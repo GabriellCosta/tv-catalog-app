@@ -2,10 +2,10 @@ package me.tigrao.catalog.movies.view.adapter
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import me.tigrao.catalog.movies.domain.model.RepositoryDataModel
+import me.tigrao.catalog.movies.domain.model.MoviewListDataModel
 
-internal class RepoAdapter :
-    PagingDataAdapter<RepositoryDataModel, RepoViewHolder>(RepoDiffConfig()) {
+internal class MoviewListAdapter :
+    PagingDataAdapter<MoviewListDataModel, RepoViewHolder>(MovieListDiffConfig()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
         return RepoViewHolder(parent)

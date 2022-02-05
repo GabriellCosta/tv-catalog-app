@@ -15,14 +15,14 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flowOf
 import me.tigrao.catalog.movies.R
-import me.tigrao.catalog.movies.domain.model.RepositoryDataModel
+import me.tigrao.catalog.movies.domain.model.MoviewListDataModel
 import me.tigrao.catalog.movies.presentation.PagerProvider
-import me.tigrao.catalog.movies.presentation.RepoViewModel
+import me.tigrao.catalog.movies.presentation.MoviewListViewModel
 import me.tigrao.catalog.movies.presentation.StateViewFactory
 import me.tigrao.catalog.movies.presentation.model.RepoAction
 import me.tigrao.catalog.movies.presentation.model.RepoEvent
 import me.tigrao.catalog.movies.view.adapter.LayoutManagerFactory
-import me.tigrao.catalog.movies.view.adapter.RepoAdapter
+import me.tigrao.catalog.movies.view.adapter.MoviewListAdapter
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Ignore
@@ -40,7 +40,7 @@ class RepoActivityTest {
     lateinit var koinApp: KoinApplication
 
     private val pagerProvider = mockk<PagerProvider>()
-    private lateinit var viewModel: RepoViewModel
+    private lateinit var viewModel: MoviewListViewModel
 
     @After
     fun tearDown() {
@@ -90,11 +90,11 @@ class RepoActivityTest {
         assertEquals(RepoEvent.TryAgain, viewModel.event.value)
     }
 
-    private fun createList(): List<RepositoryDataModel> {
-        val list = mutableListOf<RepositoryDataModel>()
+    private fun createList(): List<MoviewListDataModel> {
+        val list = mutableListOf<MoviewListDataModel>()
 
         repeat(10) {
-            val item = RepositoryDataModel(
+            val item = MoviewListDataModel(
                 avatar = "http://google.com.br",
                 title = "mock title",
                 author = "authro mock",
@@ -110,7 +110,7 @@ class RepoActivityTest {
     }
 
     private fun prepare(
-        list: List<RepositoryDataModel> = createList()
+        list: List<MoviewListDataModel> = createList()
     ) {
         every { pagerProvider.providePager() } returns flowOf(PagingData.from(list))
 
@@ -124,7 +124,7 @@ class RepoActivityTest {
             )
         )
 
-        viewModel = RepoViewModel(pagerProvider, stateViewFactory)
+        viewModel = MoviewListViewModel(pagerProvider, stateViewFactory)
 
         mockKoin()
     }
@@ -138,7 +138,7 @@ class RepoActivityTest {
             }
 
             single {
-                RepoAdapter()
+                MoviewListAdapter()
             }
 
             single {

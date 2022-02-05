@@ -5,28 +5,28 @@ import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import me.tigrao.catalog.movies.data.api.RepoApi
-import me.tigrao.catalog.movies.domain.model.RepositoryErrorModel
-import me.tigrao.catalog.movies.domain.model.RepositoryModel
+import me.tigrao.catalog.movies.data.api.MovieListApi
+import me.tigrao.catalog.movies.domain.model.MovieListErrorModel
+import me.tigrao.catalog.movies.domain.model.MovieListModel
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class FetchRepositoryUseCaseImplTest {
 
-    private val success = mockk<FetchRepositorySuccessMapper>()
-    private val error = mockk<FetchRepositoryErrorMapper>()
-    private val api = mockk<RepoApi>()
+    private val success = mockk<FetchMovieListSuccessMapper>()
+    private val error = mockk<FetchMovieListErrorMapper>()
+    private val api = mockk<MovieListApi>()
 
-    private val subject = FetchRepositoryUseCaseImpl(api, success, error)
+    private val subject = FetchMovieListUseCaseImpl(api, success, error)
 
     @Test
     fun invoke_errorApi_callErrorMapper() = runBlocking {
-        val parameters = FetchRepositoryParameters(language = "mock-language", "sort", 1)
+        val parameters = FetchMovieListParameters(language = "mock-language", "sort", 1)
 
-        val repositoryErrorModel = mockk<RepositoryErrorModel>()
+        val repositoryErrorModel = mockk<MovieListErrorModel>()
 
         prepare(
-            repositoryErrorModel = repositoryErrorModel,
+            movieListErrorModel = repositoryErrorModel,
             apiSuccess = false,
         )
 
@@ -39,12 +39,12 @@ class FetchRepositoryUseCaseImplTest {
 
     @Test
     fun invoke_successApi_callSuccessMapper() = runBlocking {
-        val parameters = FetchRepositoryParameters(language = "mock-language", "sort", 1)
+        val parameters = FetchMovieListParameters(language = "mock-language", "sort", 1)
 
-        val repositoryModel = mockk<RepositoryModel>()
+        val repositoryModel = mockk<MovieListModel>()
 
         prepare(
-            repositoryModel = repositoryModel,
+            movieListModel = repositoryModel,
             apiSuccess = true,
         )
 
@@ -56,18 +56,18 @@ class FetchRepositoryUseCaseImplTest {
     }
 
     private fun prepare(
-        repositoryErrorModel: RepositoryErrorModel = mockk(),
-        repositoryModel: RepositoryModel = mockk(),
+        movieListErrorModel: MovieListErrorModel = mockk(),
+        movieListModel: MovieListModel = mockk(),
         apiSuccess: Boolean = true,
     ) {
-        every { error.mapFrom(any()) } returns repositoryErrorModel
-        every { success.mapFrom(any()) } returns repositoryModel
+        every { error.mapFrom(any()) } returns movieListErrorModel
+        every { success.mapFrom(any()) } returns movieListModel
 
         if (apiSuccess) {
-            coEvery { api.fetchRepositoriesAsync(any(), any(), any()) } returns mockk()
+            coEvery { api.fetchMovieList(any(), any(), any()) } returns mockk()
         } else {
             coEvery {
-                api.fetchRepositoriesAsync(
+                api.fetchMovieList(
                     any(),
                     any(),
                     any()

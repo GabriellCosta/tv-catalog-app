@@ -1,13 +1,13 @@
 package me.tigrao.catalog.movies.domain
 
 import deb.tigrao.catalog.infra.api.ResultDomainError
-import me.tigrao.catalog.movies.domain.model.RepositoryErrorModel
+import me.tigrao.catalog.movies.domain.model.MovieListErrorModel
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class FetchRepositoryErrorMapperTest {
 
-    private val subject = FetchRepositoryErrorMapper()
+    private val subject = FetchMovieListErrorMapper()
 
     @Test
     fun mapFrom_unknownError_returnGenericError() {
@@ -15,7 +15,7 @@ class FetchRepositoryErrorMapperTest {
             from = ResultDomainError.UnknownError
         )
 
-        val expected = RepositoryErrorModel.GenericError
+        val expected = MovieListErrorModel.GenericError
 
         assertEquals(expected, result)
     }
@@ -32,7 +32,7 @@ class FetchRepositoryErrorMapperTest {
             )
         )
 
-        val expected = RepositoryErrorModel.GenericError
+        val expected = MovieListErrorModel.GenericError
 
         assertEquals(expected, result)
     }
@@ -49,7 +49,7 @@ class FetchRepositoryErrorMapperTest {
             )
         )
 
-        val expected = RepositoryErrorModel.MaxOfRequestReach
+        val expected = MovieListErrorModel.MaxOfRequestReach
 
         assertEquals(expected, result)
     }
