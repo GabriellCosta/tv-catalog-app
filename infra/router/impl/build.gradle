@@ -1,0 +1,9 @@
+plugins {
+    id "kotlin"
+}
+
+dependencies {
+    implementation projects.infra.router.public
+    implementation dependencies.Dependencies.kotlinStdlib
+    implementation dependencies.Dependencies.Navigation.ciceroni
+}
