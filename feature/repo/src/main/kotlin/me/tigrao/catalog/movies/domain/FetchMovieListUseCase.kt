@@ -22,8 +22,6 @@ internal class FetchMovieListUseCaseImpl(
     ): ResultDomain<MovieListModel, MovieListErrorModel> {
         return callApi {
             api.fetchMovieList(
-                language = parameter.language,
-                sort = parameter.sort,
                 page = parameter.page,
             )
         }.transformMap(success::mapFrom, error::mapFrom)
@@ -31,7 +29,5 @@ internal class FetchMovieListUseCaseImpl(
 }
 
 internal data class FetchMovieListParameters(
-    val language: String,
-    val sort: String,
     val page: Int,
 )

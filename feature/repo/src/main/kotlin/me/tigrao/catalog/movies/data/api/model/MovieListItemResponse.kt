@@ -1,16 +1,26 @@
 package me.tigrao.catalog.movies.data.api.model
 
-import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-internal class MovieListItemResponse(
+internal data class MovieListItemResponse(
     val id: Long,
     val name: String,
-    val description: String?,
-    val owner: OwnerResponse,
-    @Json(name = "forks_count")
-    val forks: Int,
-    @Json(name = "stargazers_count")
-    val stars: Int
+    val image: ImageResponse,
+    val summary: String,
+    val schedule : ScheduleResponse,
+    val genres: List<String>,
+    val status: String,
+)
+
+@JsonClass(generateAdapter = true)
+internal data class ScheduleResponse(
+    val time: String,
+    val days: List<String>,
+)
+
+@JsonClass(generateAdapter = true)
+internal data class ImageResponse(
+    val medium: String,
+    val original: String,
 )
