@@ -1,0 +1,16 @@
+plugins {
+    id "com.android.library"
+    id "kotlin-android"
+}
+
+dependencies {
+    implementation(dependencies.Dependencies.kotlinStdlib)
+
+    implementation dependencies.Dependencies.Koin.android
+    implementation(dependencies.Dependencies.fragment)
+    implementation(dependencies.Dependencies.coreKTX)
+
+    testImplementation(dependencies.TestDependencies.jUnit)
+    testImplementation(dependencies.TestDependencies.roboletric)
+    testImplementation(dependencies.TestDependencies.mockk)
+}
