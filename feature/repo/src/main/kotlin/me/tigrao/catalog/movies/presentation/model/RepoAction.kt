@@ -8,4 +8,6 @@ internal sealed interface RepoAction : ViewAction {
     data class CollectState(val state: CombinedLoadStates, val itemCount: Int) : RepoAction
 
     object TryAgain : RepoAction
+
+    data class SearchInput(val query: String): RepoAction
 }

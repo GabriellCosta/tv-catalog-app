@@ -1,17 +1,18 @@
 package me.tigrao.catalog.movies
 
-import me.tigrao.catalog.movies.data.RepoDataSource
+import me.tigrao.catalog.movies.data.RepoDatasourceFactory
 import me.tigrao.catalog.movies.data.RepositoryErrorModelToUiMapper
 import me.tigrao.catalog.movies.data.api.MovieListApi
 import me.tigrao.catalog.movies.domain.FetchMovieListErrorMapper
+import me.tigrao.catalog.movies.domain.FetchMovieListSearchSuccessMapper
 import me.tigrao.catalog.movies.domain.FetchMovieListSuccessMapper
 import me.tigrao.catalog.movies.domain.FetchMovieListUseCase
 import me.tigrao.catalog.movies.domain.FetchMovieListUseCaseImpl
 import me.tigrao.catalog.movies.presentation.PagerProvider
-import me.tigrao.catalog.movies.presentation.MoviewListViewModel
+import me.tigrao.catalog.movies.presentation.MovieListViewModel
 import me.tigrao.catalog.movies.presentation.StateViewFactory
 import me.tigrao.catalog.movies.view.adapter.LayoutManagerFactory
-import me.tigrao.catalog.movies.view.adapter.MoviewListAdapter
+import me.tigrao.catalog.movies.view.adapter.MovieListAdapter
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -24,11 +25,11 @@ val movieListModule = module {
     }
 
     single {
-        MoviewListAdapter()
+        MovieListAdapter()
     }
 
     single {
-        RepoDataSource(get(), get())
+        RepoDatasourceFactory(get(), get())
     }
 
     factory {
@@ -36,7 +37,7 @@ val movieListModule = module {
     }
 
     viewModel {
-        MoviewListViewModel(get(), get())
+        MovieListViewModel(get(), get())
     }
 
     factory {
@@ -56,10 +57,14 @@ val movieListModule = module {
     }
 
     factory {
+        FetchMovieListSearchSuccessMapper(get())
+    }
+
+    factory {
         FetchMovieListErrorMapper()
     }
 
     factory<FetchMovieListUseCase> {
-        FetchMovieListUseCaseImpl(get(), get(), get())
+        FetchMovieListUseCaseImpl(get(), get(), get(), get())
     }
 }

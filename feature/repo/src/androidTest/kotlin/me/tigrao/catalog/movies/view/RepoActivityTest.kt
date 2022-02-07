@@ -17,12 +17,12 @@ import kotlinx.coroutines.flow.flowOf
 import me.tigrao.catalog.movies.R
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.presentation.PagerProvider
-import me.tigrao.catalog.movies.presentation.MoviewListViewModel
+import me.tigrao.catalog.movies.presentation.MovieListViewModel
 import me.tigrao.catalog.movies.presentation.StateViewFactory
 import me.tigrao.catalog.movies.presentation.model.RepoAction
 import me.tigrao.catalog.movies.presentation.model.RepoEvent
 import me.tigrao.catalog.movies.view.adapter.LayoutManagerFactory
-import me.tigrao.catalog.movies.view.adapter.MoviewListAdapter
+import me.tigrao.catalog.movies.view.adapter.MovieListAdapter
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Ignore
@@ -40,7 +40,7 @@ class RepoActivityTest {
     lateinit var koinApp: KoinApplication
 
     private val pagerProvider = mockk<PagerProvider>()
-    private lateinit var viewModel: MoviewListViewModel
+    private lateinit var viewModel: MovieListViewModel
 
     @After
     fun tearDown() {
@@ -124,7 +124,7 @@ class RepoActivityTest {
             )
         )
 
-        viewModel = MoviewListViewModel(pagerProvider, stateViewFactory)
+        viewModel = MovieListViewModel(pagerProvider, stateViewFactory)
 
         mockKoin()
     }
@@ -138,7 +138,7 @@ class RepoActivityTest {
             }
 
             single {
-                MoviewListAdapter()
+                MovieListAdapter()
             }
 
             single {
