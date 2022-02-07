@@ -36,6 +36,8 @@
         <item name="spacingXL">@dimen/spacing_XL</item>
         <item name="spacingXXL">@dimen/spacing_XXL</item>
         <item name="spacingXXXL">@dimen/spacing_XXXL</item>
+
+        <item name="toolbarStyle">@style/Widget.App.Toolbar</item>
     </style>
 
     <style name="Base.Theme.MaterialThemeBuilder" parent="Theme.MaterialComponents.Light.NoActionBar">

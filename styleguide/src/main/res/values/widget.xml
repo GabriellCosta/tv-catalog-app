@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget" />
+
+    <style name="Widget.App" />
+
+    <style name="Widget.App.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:elevation">0dp</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Widget.App.Toolbar</item>
+    </style>
+
+    <style name="Widget.App.Toolbar.BackButton">
+        <!--<item name="navigationIcon">@drawable/ic_baseline_arrow_back_24</item>-->
+    </style>
+
+    <style name="ThemeOverlay.Widget.App.Toolbar" parent="">
+        <item name="colorControlNormal">#FFFFFF</item>
+    </style>
+</resources>

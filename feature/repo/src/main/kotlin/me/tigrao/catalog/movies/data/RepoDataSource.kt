@@ -7,6 +7,7 @@ import me.tigrao.catalog.movies.domain.FetchMovieListUseCase
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 
 internal class RepoDataSource(
+    private val query: String,
     private val fetchRepositoryUseCase: FetchMovieListUseCase,
     private val repositoryErrorModelToUiMapper: RepositoryErrorModelToUiMapper,
 ) : PagingSource<Int, MovieListDataModel>() {
@@ -22,15 +23,22 @@ internal class RepoDataSource(
         val nextPageNumber = params.key ?: 0
 
         val parameters = FetchMovieListParameters(
+            query = query,
             page = nextPageNumber,
         )
+
+        val nextKey = if(query.isNotEmpty()) {
+            null
+        } else {
+            nextPageNumber + 1
+        }
 
         return fetchRepositoryUseCase(parameters).map(
             success = {
                 LoadResult.Page(
                     data = it.data,
                     prevKey = null, // Only paging forward.
-                    nextKey = nextPageNumber + 1
+                    nextKey = nextKey,
                 )
             },
             error = {
