@@ -42,6 +42,7 @@ object Dependencies {
     val materialDesign = "com.google.android.material:material:${Versions.material}"
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val fragment = "androidx.fragment:fragment-ktx:1.4.0"
 
     val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.livedata}"
     val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.livedata}"
