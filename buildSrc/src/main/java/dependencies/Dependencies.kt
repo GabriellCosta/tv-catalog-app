@@ -43,7 +43,7 @@ object Dependencies {
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
-    val viewModel = "androidx.lifecycle:lifecycle-viewmodel:${Versions.livedata}"
+    val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.livedata}"
     val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.livedata}"
     val lifecycle = "androidx.lifecycle:lifecycle-livedata:${Versions.livedata}"
 
