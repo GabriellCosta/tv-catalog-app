@@ -36,21 +36,4 @@ class FetchRepositoryErrorMapperTest {
 
         assertEquals(expected, result)
     }
-
-    @Test
-    fun mapFrom_networkError503_returnMaxOfRequestsReach() {
-        val result = subject.mapFrom(
-            from = ResultDomainError.NetworkError(
-                httpCode = 403,
-                exceptionTitle = "mock-title",
-                httpMessage = "message",
-                localizeMessage = "localized message",
-                isConnectionError = false,
-            )
-        )
-
-        val expected = MovieListErrorModel.MaxOfRequestReach
-
-        assertEquals(expected, result)
-    }
 }

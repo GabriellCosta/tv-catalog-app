@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="movie_list_error_generic">Encontramos um erro ao carregar os repositorios</string>
-    <string name="movie_list_error_max_requests">Você atingiu o maximo de vezes que pode usar o app dentro de uma hora, tente novamente daqui uma hora</string>
 
     <string name="movie_list_try_again">Tentar novamente</string>
 
