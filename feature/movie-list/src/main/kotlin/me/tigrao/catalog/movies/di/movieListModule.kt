@@ -1,4 +1,4 @@
-package me.tigrao.catalog.movies
+package me.tigrao.catalog.movies.di
 
 import me.tigrao.catalog.movies.data.MovieListPageDatasourceFactory
 import me.tigrao.catalog.movies.data.MovieListErrorModelToUiMapper

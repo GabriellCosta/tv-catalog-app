@@ -4,7 +4,7 @@ import android.app.Application
 import dev.tigrao.catalog.infra.network.di.networkImplModule
 import me.tigrao.catalog.detail.di.movieDetailModule
 import me.tigrao.catalog.infra.router.di.routerModule
-import me.tigrao.catalog.movies.movieListModule
+import me.tigrao.catalog.movies.di.movieListModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
