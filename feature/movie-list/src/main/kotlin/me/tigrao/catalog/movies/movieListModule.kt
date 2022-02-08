@@ -1,7 +1,7 @@
 package me.tigrao.catalog.movies
 
-import me.tigrao.catalog.movies.data.RepoDatasourceFactory
-import me.tigrao.catalog.movies.data.RepositoryErrorModelToUiMapper
+import me.tigrao.catalog.movies.data.MovieListDatasourceFactory
+import me.tigrao.catalog.movies.data.MovieListErrorModelToUiMapper
 import me.tigrao.catalog.movies.data.api.MovieListApi
 import me.tigrao.catalog.movies.domain.mapper.FetchMovieListErrorMapper
 import me.tigrao.catalog.movies.domain.mapper.FetchMovieListSearchSuccessMapper
@@ -28,11 +28,11 @@ val movieListModule = module {
     }
 
     single {
-        RepoDatasourceFactory(get(), get())
+        MovieListDatasourceFactory(get(), get())
     }
 
     factory {
-        RepositoryErrorModelToUiMapper(androidContext().resources)
+        MovieListErrorModelToUiMapper(androidContext().resources)
     }
 
     viewModel {

@@ -6,10 +6,10 @@ import me.tigrao.catalog.movies.domain.FetchMovieListParameters
 import me.tigrao.catalog.movies.domain.FetchMovieListUseCase
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 
-internal class RepoDataSource(
+internal class MovieListDataSource(
     private val query: String,
     private val fetchRepositoryUseCase: FetchMovieListUseCase,
-    private val repositoryErrorModelToUiMapper: RepositoryErrorModelToUiMapper,
+    private val movieListErrorModelToUiMapper: MovieListErrorModelToUiMapper,
 ) : PagingSource<Int, MovieListDataModel>() {
 
     override fun getRefreshKey(state: PagingState<Int, MovieListDataModel>): Int? {
@@ -42,7 +42,7 @@ internal class RepoDataSource(
                 )
             },
             error = {
-                val message = repositoryErrorModelToUiMapper.mapFrom(it)
+                val message = movieListErrorModelToUiMapper.mapFrom(it)
 
                 LoadResult.Error(IllegalStateException(message))
             }
