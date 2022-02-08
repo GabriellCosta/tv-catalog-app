@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toTopOf="@+id/loading_repo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/item_list_repo"
+        tools:listitem="@layout/item_list"
         tools:visibility="visible" />
 
     <ProgressBar

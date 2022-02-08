@@ -6,17 +6,17 @@ import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import me.tigrao.catalog.movies.databinding.ItemListRepoBinding
+import me.tigrao.catalog.movies.databinding.ItemListBinding
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.presentation.model.MovieListAction
 
-internal class RepoViewHolder(private val binding: ItemListRepoBinding) :
+internal class RepoViewHolder(private val binding: ItemListBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         operator fun invoke(parent: ViewGroup): RepoViewHolder {
             val binding =
-                ItemListRepoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
             return RepoViewHolder(binding)
         }
