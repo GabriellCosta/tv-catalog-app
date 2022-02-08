@@ -11,6 +11,8 @@ import me.tigrao.catalog.detail.domain.model.EpisodeListErrorModel
 import me.tigrao.catalog.detail.presententation.model.MovieDetailAction
 import me.tigrao.catalog.detail.presententation.model.MovieDetailState
 import me.tigrao.catalog.detail.presententation.model.data.EpisodeModelUI
+import me.tigrao.catalog.detail.presententation.model.data.MovieDetailListItemType
+import me.tigrao.catalog.detail.presententation.model.data.SeasonModelUi
 import me.tigrao.catalog.detail.view.MovieDetailArgs
 import me.tigrao.catalog.infra.action.dispatcher.ActionDispatcher
 import me.tigrao.catalog.infra.key.getArgs
@@ -34,7 +36,6 @@ internal class MovieDetailViewModel(
     override fun dispatch(action: MovieDetailAction) {
         when (action) {
             is MovieDetailAction.EpisodeClickAction -> TODO()
-            MovieDetailAction.SeasonClickAction -> TODO()
             MovieDetailAction.TryAgain -> tryAgain()
         }
     }
@@ -49,20 +50,21 @@ internal class MovieDetailViewModel(
 
             fetchEpisodesListUseCase(arg.id)
                 .onSuccess {
-                    val result = mutableListOf<EpisodeModelUI>()
+                    val result = mutableListOf<MovieDetailListItemType>()
 
                     it.data.forEach { model ->
                         result.add(
-                            EpisodeModelUI(
+                            SeasonModelUi(
                                 name = model.season,
-                                action = MovieDetailAction.SeasonClickAction
                             )
                         )
 
                         result.addAll(model.episodes.map { episodesModel ->
                             EpisodeModelUI(
                                 name = episodesModel.name,
-                                action = MovieDetailAction.EpisodeClickAction(id = episodesModel.id)
+                                summary = episodesModel.summary,
+                                info = "Season: ${episodesModel.season} | Ep number: #${episodesModel.number}",
+                                image = episodesModel.image,
                             )
                         })
                     }

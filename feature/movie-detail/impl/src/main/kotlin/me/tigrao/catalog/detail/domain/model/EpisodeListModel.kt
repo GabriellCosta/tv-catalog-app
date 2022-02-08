@@ -14,4 +14,6 @@ internal data class EpisodeItemModel(
     val name: String,
     val image: String,
     val summary: String,
+    val number: Int,
+    val season: String,
 )
