@@ -6,6 +6,9 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import me.tigrao.catalog.movies.data.api.MovieListApi
+import me.tigrao.catalog.movies.domain.mapper.FetchMovieListErrorMapper
+import me.tigrao.catalog.movies.domain.mapper.FetchMovieListSearchSuccessMapper
+import me.tigrao.catalog.movies.domain.mapper.FetchMovieListSuccessMapper
 import me.tigrao.catalog.movies.domain.model.MovieListErrorModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
 import org.junit.Assert.assertEquals
