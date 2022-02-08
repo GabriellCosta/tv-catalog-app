@@ -21,6 +21,7 @@ internal class EpisodeListSuccessMapper {
                     EpisodeItemModel(
                         id = currentEp.id,
                         name = currentEp.name,
+                        summary = currentEp.summary,
                         image = currentEp.image.medium,
                     )
                 }

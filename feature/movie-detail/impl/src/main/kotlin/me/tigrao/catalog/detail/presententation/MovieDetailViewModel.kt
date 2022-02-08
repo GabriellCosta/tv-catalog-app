@@ -7,8 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import me.tigrao.catalog.detail.domain.FetchEpisodesListUseCase
+import me.tigrao.catalog.detail.domain.model.EpisodeListErrorModel
 import me.tigrao.catalog.detail.presententation.model.MovieDetailAction
 import me.tigrao.catalog.detail.presententation.model.MovieDetailState
+import me.tigrao.catalog.detail.presententation.model.data.EpisodeModelUI
 import me.tigrao.catalog.detail.view.MovieDetailArgs
 import me.tigrao.catalog.infra.action.dispatcher.ActionDispatcher
 import me.tigrao.catalog.infra.key.getArgs
@@ -16,6 +18,7 @@ import me.tigrao.catalog.infra.key.getArgs
 internal class MovieDetailViewModel(
     handle: SavedStateHandle,
     private val fetchEpisodesListUseCase: FetchEpisodesListUseCase,
+    private val stateViewFactory: MovieDetailStateViewFactory,
 ) : ViewModel(), ActionDispatcher<MovieDetailAction> {
 
     private val arg: MovieDetailArgs = handle.getArgs()
@@ -23,18 +26,59 @@ internal class MovieDetailViewModel(
     private val _state = MutableLiveData<MovieDetailState>()
     val state: LiveData<MovieDetailState> = _state
 
+    init {
+        _state.value = MovieDetailState.InitialState(arg)
+        fetchEpisodeList()
+    }
+
     override fun dispatch(action: MovieDetailAction) {
-        TODO("Not yet implemented")
+        when (action) {
+            is MovieDetailAction.EpisodeClickAction -> TODO()
+            MovieDetailAction.SeasonClickAction -> TODO()
+            MovieDetailAction.TryAgain -> tryAgain()
+        }
+    }
+
+    private fun tryAgain() {
+        fetchEpisodeList()
     }
 
     private fun fetchEpisodeList() {
         viewModelScope.launch {
+            _state.postValue(MovieDetailState.LoadState)
+
             fetchEpisodesListUseCase(arg.id)
                 .onSuccess {
+                    val result = mutableListOf<EpisodeModelUI>()
 
+                    it.data.forEach { model ->
+                        result.add(
+                            EpisodeModelUI(
+                                name = model.season,
+                                action = MovieDetailAction.SeasonClickAction
+                            )
+                        )
+
+                        result.addAll(model.episodes.map { episodesModel ->
+                            EpisodeModelUI(
+                                name = episodesModel.name,
+                                action = MovieDetailAction.EpisodeClickAction(id = episodesModel.id)
+                            )
+                        })
+                    }
+
+                    _state.postValue(
+                        MovieDetailState.Success(
+                            result
+                        )
+                    )
                 }
                 .onError {
-
+                    val state = when (it) {
+                        EpisodeListErrorModel.EmptyEpisodes -> stateViewFactory.emptyState()
+                        EpisodeListErrorModel.GenericError -> stateViewFactory.genericError()
+                    }
+                    _state.postValue(MovieDetailState.Error(state))
                 }
         }
     }
