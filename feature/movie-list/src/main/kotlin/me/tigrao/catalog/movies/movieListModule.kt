@@ -25,10 +25,6 @@ val movieListModule = module {
     }
 
     single {
-        MovieListAdapter()
-    }
-
-    single {
         RepoDatasourceFactory(get(), get())
     }
 
