@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="movie_detail_try_again">Tentar novamente</string>
+    <string name="movie_detail_episode_info">Season: %s | Ep number: #%d</string>
 
     <string name="movie_detail_state_empty_title">Parece que não temos nenhum episodio</string>
     <string name="movie_detail_state_empty_button_positive">@string/movie_detail_try_again</string>
