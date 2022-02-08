@@ -39,6 +39,8 @@ android {
 
 dependencies {
     implementation(projects.feature.movieList)
+    implementation(projects.feature.movieDetail.impl)
+    implementation(projects.infra.router.impl)
     implementation(projects.infra.network.impl)
     implementation(projects.infra.network.public)
     implementation dependencies.Dependencies.appCompat
