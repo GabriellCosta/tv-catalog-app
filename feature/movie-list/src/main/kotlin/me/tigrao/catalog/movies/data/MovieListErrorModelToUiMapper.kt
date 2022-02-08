@@ -4,7 +4,7 @@ import android.content.res.Resources
 import me.tigrao.catalog.movies.R
 import me.tigrao.catalog.movies.domain.model.MovieListErrorModel
 
-internal class RepositoryErrorModelToUiMapper(
+internal class MovieListErrorModelToUiMapper(
     private val resources: Resources,
 ) {
 
