@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import by.kirich1409.viewbindingdelegate.viewBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import me.tigrao.catalog.detail.MovieDetailNavigator
 import me.tigrao.catalog.infra.action.dispatcher.ViewAction
 import me.tigrao.catalog.movies.R
 import me.tigrao.catalog.movies.databinding.FragmentMovieListBinding
@@ -32,8 +33,13 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list), StateViewActio
 
     private val binder by viewBinding(FragmentMovieListBinding::bind)
 
+    private val navigator by inject<MovieDetailNavigator>()
     private val viewModel: MovieListViewModel by viewModel()
-    private val repoAdapter by inject<MovieListAdapter>()
+    private val repoAdapter by lazy {
+        MovieListAdapter {
+            viewModel.dispatch(it)
+        }
+    }
     private val layoutMangerFactory by inject<LayoutManagerFactory>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -106,6 +112,11 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list), StateViewActio
 
     private fun readEvent(event: RepoEvent) = when (event) {
         RepoEvent.TryAgain -> tryAgain()
+        is RepoEvent.OpenDetailEvent -> openDetail(event)
+    }
+
+    private fun openDetail(event: RepoEvent.OpenDetailEvent) {
+        navigator.openMovieDetail(event.data)
     }
 
     private fun tryAgain() {

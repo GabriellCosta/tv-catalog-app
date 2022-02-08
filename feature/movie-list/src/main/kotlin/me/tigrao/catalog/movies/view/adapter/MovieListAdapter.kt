@@ -3,8 +3,11 @@ package me.tigrao.catalog.movies.view.adapter
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
+import me.tigrao.catalog.movies.presentation.model.RepoAction
 
-internal class MovieListAdapter :
+internal class MovieListAdapter(
+    private val clickListener: (action: RepoAction) -> Unit
+) :
     PagingDataAdapter<MovieListDataModel, RepoViewHolder>(MovieListDiffConfig()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
@@ -13,7 +16,7 @@ internal class MovieListAdapter :
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
         getItem(position)?.let {
-            holder.bind(it)
+            holder.bind(it, clickListener)
         }
     }
 }

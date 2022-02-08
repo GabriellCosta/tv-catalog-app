@@ -2,6 +2,7 @@ package me.tigrao.catalog.infra.router.di
 
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
+import me.tigrao.catalog.infra.router.NavigationRoute
 import me.tigrao.catalog.infra.router.NavigationRouteDefault
 import org.koin.dsl.module
 
@@ -18,5 +19,5 @@ val routerModule = module {
         get<Cicerone<Router>>().getNavigatorHolder()
     }
 
-    single { NavigationRouteDefault(get()) }
+    single<NavigationRoute> { NavigationRouteDefault(get()) }
 }

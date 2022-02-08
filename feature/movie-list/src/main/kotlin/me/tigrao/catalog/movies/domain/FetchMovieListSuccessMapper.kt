@@ -1,8 +1,10 @@
 package me.tigrao.catalog.movies.domain
 
+import me.tigrao.catalog.detail.view.MovieDetailArgs
 import me.tigrao.catalog.movies.data.api.model.MovieListItemResponse
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
+import me.tigrao.catalog.movies.presentation.model.RepoAction
 
 internal class FetchMovieListSuccessMapper {
 
@@ -13,6 +15,15 @@ internal class FetchMovieListSuccessMapper {
                 title = map.name,
                 author = map.status,
                 description = map.summary,
+                action = RepoAction.OpenDetail(
+                    data = MovieDetailArgs(
+                        id = map.id,
+                        name = map.name,
+                        image = map.image.original,
+                        genreList = map.genres,
+                        summary = map.summary,
+                    )
+                )
             )
         }
 

@@ -1,6 +1,7 @@
 package me.tigrao.catalog.movies.presentation.model
 
 import androidx.paging.CombinedLoadStates
+import me.tigrao.catalog.detail.view.MovieDetailArgs
 import me.tigrao.catalog.infra.action.dispatcher.ViewAction
 
 internal sealed interface RepoAction : ViewAction {
@@ -9,5 +10,7 @@ internal sealed interface RepoAction : ViewAction {
 
     object TryAgain : RepoAction
 
-    data class SearchInput(val query: String): RepoAction
+    data class SearchInput(val query: String) : RepoAction
+
+    data class OpenDetail(val data: MovieDetailArgs) : RepoAction
 }
