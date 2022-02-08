@@ -6,7 +6,7 @@ import me.tigrao.catalog.movies.domain.FetchMovieListParameters
 import me.tigrao.catalog.movies.domain.FetchMovieListUseCase
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 
-internal class MovieListDataSource(
+internal class MovieListPageDataSource(
     private val query: String,
     private val fetchRepositoryUseCase: FetchMovieListUseCase,
     private val movieListErrorModelToUiMapper: MovieListErrorModelToUiMapper,

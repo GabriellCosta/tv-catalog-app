@@ -1,6 +1,6 @@
 package me.tigrao.catalog.movies
 
-import me.tigrao.catalog.movies.data.MovieListDatasourceFactory
+import me.tigrao.catalog.movies.data.MovieListPageDatasourceFactory
 import me.tigrao.catalog.movies.data.MovieListErrorModelToUiMapper
 import me.tigrao.catalog.movies.data.api.MovieListApi
 import me.tigrao.catalog.movies.domain.mapper.FetchMovieListErrorMapper
@@ -28,7 +28,7 @@ val movieListModule = module {
     }
 
     single {
-        MovieListDatasourceFactory(get(), get())
+        MovieListPageDatasourceFactory(get(), get())
     }
 
     factory {
