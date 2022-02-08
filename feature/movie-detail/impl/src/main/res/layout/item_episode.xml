@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/txt_content"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
     android:layout_height="wrap_content"
-    android:textAppearance="?attr/textAppearanceBody1"
-    tools:text="Item" />
+    android:layout_marginHorizontal="?spacingMD"
+    android:layout_marginTop="?spacingXS">
+
+    <TextView
+        android:layout_margin="?spacingMD"
+        android:id="@+id/txt_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceBody1"
+        tools:text="Item" />
+
+</com.google.android.material.card.MaterialCardView>

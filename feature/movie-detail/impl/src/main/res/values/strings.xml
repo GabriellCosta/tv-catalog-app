@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie_detail_try_again">Tentar novamente</string>
+
+    <string name="movie_detail_state_empty_title">Parece que não temos nenhum episodio</string>
+    <string name="movie_detail_state_empty_button_positive">@string/movie_detail_try_again</string>
+
+    <string name="movie_detail_state_generic_title">Encontramos um erro ao tentar carregar a lista de episodios</string>
+    <string name="movie_detail_state_generic_button_positive">@string/movie_detail_try_again</string>
+</resources>

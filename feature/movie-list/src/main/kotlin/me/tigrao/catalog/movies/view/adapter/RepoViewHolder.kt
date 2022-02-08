@@ -33,7 +33,6 @@ internal class RepoViewHolder(private val binding: ItemListRepoBinding) :
             Glide.with(this)
                 .load(item.image)
                 .apply(RequestOptions.circleCropTransform())
-                .placeholder(R.drawable.ic_git)
                 .into(this)
         }
 

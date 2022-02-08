@@ -2,12 +2,15 @@ package me.tigrao.catalog.detail.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import me.tigrao.catalog.detail.impl.databinding.ItemEpisodeBinding
 import me.tigrao.catalog.detail.presententation.model.data.EpisodeModelUI
 
 internal class EpisodesViewHolder(
-    private val viewBinding: ItemEpisodeBinding,
-) : EpisodesListViewHolder(viewBinding.root) {
+    private val binding: ItemEpisodeBinding,
+) : EpisodesListViewHolder(binding.root) {
 
     companion object {
         operator fun invoke(parent: ViewGroup): EpisodesListViewHolder =
@@ -17,6 +20,6 @@ internal class EpisodesViewHolder(
     }
 
     override fun bind(item: EpisodeModelUI) {
-        viewBinding.txtContent.text = item.name
+        binding.txtContent.text = item.name
     }
 }

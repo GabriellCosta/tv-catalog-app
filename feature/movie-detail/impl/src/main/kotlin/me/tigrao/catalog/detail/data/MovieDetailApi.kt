@@ -6,6 +6,6 @@ import retrofit2.http.Path
 
 internal interface MovieDetailApi {
 
-    @GET("shows/:id/episodes")
-    fun getSeasons(@Path("id") id: Long): List<EpisodeListResponse>
+    @GET("shows/{id}/episodes")
+    suspend fun getSeasons(@Path("id") id: Long): List<EpisodeListResponse>
 }

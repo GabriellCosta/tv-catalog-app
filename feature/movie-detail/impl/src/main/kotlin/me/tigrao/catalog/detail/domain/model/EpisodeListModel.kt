@@ -13,4 +13,5 @@ internal data class EpisodeItemModel(
     val id: Long,
     val name: String,
     val image: String,
+    val summary: String,
 )

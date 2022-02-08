@@ -8,7 +8,8 @@ internal data class EpisodeListResponse(
     val number: Int,
     val name: String,
     val season: Int,
-    val image: ImageResponse
+    val image: ImageResponse,
+    val summary: String,
 )
 
 //TODO: THIS ONE IS DUPLICATED
