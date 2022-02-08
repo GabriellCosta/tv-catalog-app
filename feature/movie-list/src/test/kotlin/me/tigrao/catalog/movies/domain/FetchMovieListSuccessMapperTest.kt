@@ -2,13 +2,11 @@ package me.tigrao.catalog.movies.domain
 
 import me.tigrao.catalog.detail.view.MovieDetailArgs
 import me.tigrao.catalog.movies.data.api.model.ImageResponse
-import me.tigrao.catalog.movies.data.api.model.OwnerResponse
-import me.tigrao.catalog.movies.data.api.model.MovieListResponse
 import me.tigrao.catalog.movies.data.api.model.MovieListItemResponse
 import me.tigrao.catalog.movies.data.api.model.ScheduleResponse
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
-import me.tigrao.catalog.movies.presentation.model.RepoAction
+import me.tigrao.catalog.movies.presentation.model.MovieListAction
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -45,7 +43,7 @@ class FetchMovieListSuccessMapperTest {
                     title = "mock-name",
                     author = "Ended",
                     description = "summary mock",
-                    action = RepoAction.OpenDetail(
+                    action = MovieListAction.OpenDetail(
                         data = MovieDetailArgs(
                             id = 13L,
                             name = "mock-name",

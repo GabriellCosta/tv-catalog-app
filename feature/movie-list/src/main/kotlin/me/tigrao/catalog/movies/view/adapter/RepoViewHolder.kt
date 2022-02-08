@@ -6,10 +6,9 @@ import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import me.tigrao.catalog.movies.R
 import me.tigrao.catalog.movies.databinding.ItemListRepoBinding
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
-import me.tigrao.catalog.movies.presentation.model.RepoAction
+import me.tigrao.catalog.movies.presentation.model.MovieListAction
 
 internal class RepoViewHolder(private val binding: ItemListRepoBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -23,7 +22,7 @@ internal class RepoViewHolder(private val binding: ItemListRepoBinding) :
         }
     }
 
-    fun bind(item: MovieListDataModel, clickListener: (action: RepoAction) -> Unit) {
+    fun bind(item: MovieListDataModel, clickListener: (action: MovieListAction) -> Unit) {
         binding.title.text = item.title
         binding.description.text =
             HtmlCompat.fromHtml(item.description, HtmlCompat.FROM_HTML_MODE_COMPACT)

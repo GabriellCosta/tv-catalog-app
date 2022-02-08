@@ -10,42 +10,42 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.tigrao.catalog.infra.action.dispatcher.ActionDispatcher
 import me.tigrao.catalog.infra.arch.SingleLiveData
-import me.tigrao.catalog.movies.presentation.model.RepoAction
-import me.tigrao.catalog.movies.presentation.model.RepoEvent
-import me.tigrao.catalog.movies.presentation.model.RepoSate
+import me.tigrao.catalog.movies.presentation.model.MovieListAction
+import me.tigrao.catalog.movies.presentation.model.MovieListEvent
+import me.tigrao.catalog.movies.presentation.model.MovieListSate
 
 internal class MovieListViewModel(
     private val pagerProvider: PagerProvider,
     private val stateViewFactory: StateViewFactory,
-) : ViewModel(), ActionDispatcher<RepoAction> {
+) : ViewModel(), ActionDispatcher<MovieListAction> {
 
-    private val _state = MutableLiveData<RepoSate>()
-    val state: LiveData<RepoSate> = _state
+    private val _state = MutableLiveData<MovieListSate>()
+    val state: LiveData<MovieListSate> = _state
 
-    private val _event = SingleLiveData<RepoEvent>()
-    val event: LiveData<RepoEvent> = _event
+    private val _event = SingleLiveData<MovieListEvent>()
+    val event: LiveData<MovieListEvent> = _event
 
     init {
         loadPageData()
     }
 
-    override fun dispatch(action: RepoAction) =
+    override fun dispatch(action: MovieListAction) =
         when (action) {
-            is RepoAction.CollectState -> onCollectStates(action)
-            RepoAction.TryAgain -> onTryAgain()
-            is RepoAction.SearchInput -> onSearchInput(action)
-            is RepoAction.OpenDetail -> openDetail(action)
+            is MovieListAction.CollectState -> onCollectStates(action)
+            MovieListAction.TryAgain -> onTryAgain()
+            is MovieListAction.SearchInput -> onSearchInput(action)
+            is MovieListAction.OpenDetail -> openDetail(action)
         }
 
-    private fun openDetail(action: RepoAction.OpenDetail) {
-        _event.postValue(RepoEvent.OpenDetailEvent(action.data))
+    private fun openDetail(action: MovieListAction.OpenDetail) {
+        _event.postValue(MovieListEvent.OpenDetailEvent(action.data))
     }
 
     private fun onTryAgain() {
-        _event.postValue(RepoEvent.TryAgain)
+        _event.postValue(MovieListEvent.TryAgain)
     }
 
-    private fun onSearchInput(action: RepoAction.SearchInput) {
+    private fun onSearchInput(action: MovieListAction.SearchInput) {
         loadPageData(action.query)
     }
 
@@ -54,19 +54,19 @@ internal class MovieListViewModel(
             val page = pagerProvider.providePager(query).cachedIn(viewModelScope)
 
             page.collectLatest { pagingData ->
-                _state.postValue(RepoSate.DataLoaded(pagingData))
+                _state.postValue(MovieListSate.DataLoaded(pagingData))
             }
         }
     }
 
-    private fun onCollectStates(action: RepoAction.CollectState) {
+    private fun onCollectStates(action: MovieListAction.CollectState) {
         with(action.state) {
             when (this.refresh) {
                 is LoadState.Error -> {
                     val state = if (contentIsEmpty(action.itemCount)) {
-                        RepoSate.EmptyState(stateViewFactory.genericError())
+                        MovieListSate.EmptyState(stateViewFactory.genericError())
                     } else {
-                        RepoSate.SuccessState
+                        MovieListSate.SuccessState
                     }
 
                     _state.postValue(state)
@@ -74,9 +74,9 @@ internal class MovieListViewModel(
                 is LoadState.NotLoading -> {
                     val state =
                         if (append.endOfPaginationReached && contentIsEmpty(action.itemCount)) {
-                            RepoSate.EmptyState(stateViewFactory.emptyState())
+                            MovieListSate.EmptyState(stateViewFactory.emptyState())
                         } else {
-                            RepoSate.SuccessState
+                            MovieListSate.SuccessState
                         }
 
                     _state.postValue(state)
