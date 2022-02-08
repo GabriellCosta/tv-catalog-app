@@ -19,8 +19,10 @@ internal class EpisodeListSuccessMapper {
                 season = entry.key.toString(),
                 episodes = entry.value.map { currentEp ->
                     EpisodeItemModel(
+                        season = entry.key.toString(),
                         id = currentEp.id,
                         name = currentEp.name,
+                        number = currentEp.number,
                         summary = currentEp.summary,
                         image = currentEp.image.medium,
                     )

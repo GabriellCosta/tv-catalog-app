@@ -6,7 +6,5 @@ sealed interface MovieDetailAction : ViewAction {
 
     object TryAgain : MovieDetailAction
 
-    object SeasonClickAction : MovieDetailAction
-
     data class EpisodeClickAction(val id: Long) : MovieDetailAction
 }
