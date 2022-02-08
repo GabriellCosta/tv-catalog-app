@@ -17,7 +17,7 @@ internal class FetchEpisodesListUseCaseDefault(
     private val error: EpisodesListErrorMapper,
 ) : FetchEpisodesListUseCase {
     override suspend fun invoke(id: Long): ResultDomain<EpisodeListModel, EpisodeListErrorModel> {
-        dataSource.fetchEpisodesList(id)
+        return dataSource.fetchEpisodesList(id)
             .transformMap(
                 success = success::mapFrom,
                 error = error::mapFrom,

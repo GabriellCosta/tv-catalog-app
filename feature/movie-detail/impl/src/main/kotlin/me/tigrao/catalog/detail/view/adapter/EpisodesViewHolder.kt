@@ -2,8 +2,7 @@ package me.tigrao.catalog.detail.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import me.tigrao.catalog.detail.databinding.ItemEpisodeBinding
+import me.tigrao.catalog.detail.impl.databinding.ItemEpisodeBinding
 import me.tigrao.catalog.detail.presententation.model.data.EpisodeModelUI
 
 internal class EpisodesViewHolder(
