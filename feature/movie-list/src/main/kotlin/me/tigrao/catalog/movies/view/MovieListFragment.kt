@@ -16,9 +16,9 @@ import me.tigrao.catalog.infra.action.dispatcher.ViewAction
 import me.tigrao.catalog.movies.R
 import me.tigrao.catalog.movies.databinding.FragmentMovieListBinding
 import me.tigrao.catalog.movies.presentation.MovieListViewModel
-import me.tigrao.catalog.movies.presentation.model.RepoAction
-import me.tigrao.catalog.movies.presentation.model.RepoEvent
-import me.tigrao.catalog.movies.presentation.model.RepoSate
+import me.tigrao.catalog.movies.presentation.model.MovieListAction
+import me.tigrao.catalog.movies.presentation.model.MovieListEvent
+import me.tigrao.catalog.movies.presentation.model.MovieListSate
 import me.tigrao.catalog.movies.view.adapter.LayoutManagerFactory
 import me.tigrao.catalog.movies.view.adapter.MovieListAdapter
 import me.tigrao.catalog.movies.view.adapter.RepoLoadStateAdapter
@@ -78,7 +78,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list), StateViewActio
 
             override fun onFinish() {
 
-                viewModel.dispatch(RepoAction.SearchInput(query = query.orEmpty()))
+                viewModel.dispatch(MovieListAction.SearchInput(query = query.orEmpty()))
             }
         }.start()
 
@@ -86,7 +86,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list), StateViewActio
         lifecycleScope.launch {
             repoAdapter.loadStateFlow.collect {
                 viewModel.dispatch(
-                    RepoAction.CollectState(it, repoAdapter.itemCount)
+                    MovieListAction.CollectState(it, repoAdapter.itemCount)
                 )
             }
         }
@@ -98,24 +98,24 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list), StateViewActio
         viewModel.event.observe(viewLifecycleOwner, ::readEvent)
     }
 
-    private fun readState(state: RepoSate) = when (state) {
-        is RepoSate.EmptyState -> onEmptyState(state)
-        RepoSate.SuccessState -> onSuccessState()
-        is RepoSate.DataLoaded -> onPageLoaded(state)
+    private fun readState(state: MovieListSate) = when (state) {
+        is MovieListSate.EmptyState -> onEmptyState(state)
+        MovieListSate.SuccessState -> onSuccessState()
+        is MovieListSate.DataLoaded -> onPageLoaded(state)
     }
 
-    private fun onPageLoaded(state: RepoSate.DataLoaded) {
+    private fun onPageLoaded(state: MovieListSate.DataLoaded) {
         lifecycleScope.launch {
             repoAdapter.submitData(state.data)
         }
     }
 
-    private fun readEvent(event: RepoEvent) = when (event) {
-        RepoEvent.TryAgain -> tryAgain()
-        is RepoEvent.OpenDetailEvent -> openDetail(event)
+    private fun readEvent(event: MovieListEvent) = when (event) {
+        MovieListEvent.TryAgain -> tryAgain()
+        is MovieListEvent.OpenDetailEvent -> openDetail(event)
     }
 
-    private fun openDetail(event: RepoEvent.OpenDetailEvent) {
+    private fun openDetail(event: MovieListEvent.OpenDetailEvent) {
         navigator.openMovieDetail(event.data)
     }
 
@@ -135,7 +135,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list), StateViewActio
         binder.rvRepo.isVisible = true
     }
 
-    private fun onEmptyState(state: RepoSate.EmptyState) {
+    private fun onEmptyState(state: MovieListSate.EmptyState) {
         binder.state.isVisible = true
         binder.loadingRepo.isVisible = false
 
@@ -157,6 +157,6 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list), StateViewActio
     }
 
     override fun dispatch(action: ViewAction) {
-        viewModel.dispatch(action as RepoAction)
+        viewModel.dispatch(action as MovieListAction)
     }
 }

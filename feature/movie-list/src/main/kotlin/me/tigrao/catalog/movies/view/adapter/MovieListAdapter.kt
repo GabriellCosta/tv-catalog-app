@@ -3,10 +3,10 @@ package me.tigrao.catalog.movies.view.adapter
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
-import me.tigrao.catalog.movies.presentation.model.RepoAction
+import me.tigrao.catalog.movies.presentation.model.MovieListAction
 
 internal class MovieListAdapter(
-    private val clickListener: (action: RepoAction) -> Unit
+    private val clickListener: (action: MovieListAction) -> Unit
 ) :
     PagingDataAdapter<MovieListDataModel, RepoViewHolder>(MovieListDiffConfig()) {
 
