@@ -11,7 +11,6 @@ internal class RepositoryErrorModelToUiMapper(
     fun mapFrom(from: MovieListErrorModel): String {
         val resource = when (from) {
             MovieListErrorModel.GenericError -> R.string.movie_list_error_generic
-            MovieListErrorModel.MaxOfRequestReach -> R.string.movie_list_error_max_requests
         }
 
         return resources.getString(resource)
