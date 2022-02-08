@@ -1,4 +1,4 @@
-package me.tigrao.catalog.movies.domain
+package me.tigrao.catalog.movies.domain.mapper
 
 import deb.tigrao.catalog.infra.api.ResultDomainError
 import me.tigrao.catalog.movies.domain.model.MovieListErrorModel

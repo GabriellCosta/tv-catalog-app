@@ -1,6 +1,7 @@
 package me.tigrao.catalog.movies.domain
 
 import deb.tigrao.catalog.infra.api.ResultDomainError
+import me.tigrao.catalog.movies.domain.mapper.FetchMovieListErrorMapper
 import me.tigrao.catalog.movies.domain.model.MovieListErrorModel
 import org.junit.Assert.assertEquals
 import org.junit.Test

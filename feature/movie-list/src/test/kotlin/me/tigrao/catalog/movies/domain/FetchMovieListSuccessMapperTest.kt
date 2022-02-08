@@ -4,6 +4,7 @@ import me.tigrao.catalog.detail.view.MovieDetailArgs
 import me.tigrao.catalog.movies.data.api.model.ImageResponse
 import me.tigrao.catalog.movies.data.api.model.MovieListItemResponse
 import me.tigrao.catalog.movies.data.api.model.ScheduleResponse
+import me.tigrao.catalog.movies.domain.mapper.FetchMovieListSuccessMapper
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
 import me.tigrao.catalog.movies.presentation.model.MovieListAction

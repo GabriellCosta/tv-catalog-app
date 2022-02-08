@@ -1,4 +1,4 @@
-package me.tigrao.catalog.movies.domain
+package me.tigrao.catalog.movies.domain.mapper
 
 import me.tigrao.catalog.detail.view.MovieDetailArgs
 import me.tigrao.catalog.movies.data.api.model.MovieListItemResponse

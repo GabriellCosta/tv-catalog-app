@@ -13,27 +13,16 @@ internal interface FetchMovieListUseCase {
 }
 
 internal class FetchMovieListUseCaseImpl(
-    private val api: MovieListApi,
-    private val success: FetchMovieListSuccessMapper,
-    private val searchSuccess: FetchMovieListSearchSuccessMapper,
-    private val error: FetchMovieListErrorMapper,
+    private val withSearchUseCase: FetchMovieListSearchUseCase,
+    private val noSearchUseCase: FetchMovieListWithoutSearchUseCase
 ) : FetchMovieListUseCase {
     override suspend fun invoke(
         parameter: FetchMovieListParameters,
     ): ResultDomain<MovieListModel, MovieListErrorModel> {
         return if (parameter.query.isNotEmpty()) {
-            callApi {
-                api.searchMovieList(
-                    query = parameter.query,
-                    page = parameter.page,
-                )
-            }.transformMap(searchSuccess::mapFrom, error::mapFrom)
+            withSearchUseCase(parameter)
         } else {
-            callApi {
-                api.fetchMovieList(
-                    page = parameter.page,
-                )
-            }.transformMap(success::mapFrom, error::mapFrom)
+            noSearchUseCase(parameter)
         }
     }
 }
