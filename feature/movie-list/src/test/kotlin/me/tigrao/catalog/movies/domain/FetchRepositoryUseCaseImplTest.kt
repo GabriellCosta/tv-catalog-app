@@ -14,14 +14,15 @@ import org.junit.Test
 class FetchRepositoryUseCaseImplTest {
 
     private val success = mockk<FetchMovieListSuccessMapper>()
+    private val searchSuccess = mockk<FetchMovieListSearchSuccessMapper>()
     private val error = mockk<FetchMovieListErrorMapper>()
     private val api = mockk<MovieListApi>()
 
-    private val subject = FetchMovieListUseCaseImpl(api, success, error)
+    private val subject = FetchMovieListUseCaseImpl(api, success, searchSuccess, error)
 
     @Test
     fun invoke_errorApi_callErrorMapper() = runBlocking {
-        val parameters = FetchMovieListParameters(language = "mock-language", "sort", 1)
+        val parameters = FetchMovieListParameters(query = "sort", page = 1)
 
         val repositoryErrorModel = mockk<MovieListErrorModel>()
 
@@ -39,7 +40,7 @@ class FetchRepositoryUseCaseImplTest {
 
     @Test
     fun invoke_successApi_callSuccessMapper() = runBlocking {
-        val parameters = FetchMovieListParameters(language = "mock-language", "sort", 1)
+        val parameters = FetchMovieListParameters(query = "", page = 1)
 
         val repositoryModel = mockk<MovieListModel>()
 
@@ -64,13 +65,11 @@ class FetchRepositoryUseCaseImplTest {
         every { success.mapFrom(any()) } returns movieListModel
 
         if (apiSuccess) {
-            coEvery { api.fetchMovieList(any(), any(), any()) } returns mockk()
+            coEvery { api.fetchMovieList(any()) } returns mockk()
         } else {
             coEvery {
                 api.fetchMovieList(
                     any(),
-                    any(),
-                    any()
                 )
             } throws IllegalStateException()
         }

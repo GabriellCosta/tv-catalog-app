@@ -1,10 +1,14 @@
 package me.tigrao.catalog.movies.domain
 
+import me.tigrao.catalog.detail.view.MovieDetailArgs
+import me.tigrao.catalog.movies.data.api.model.ImageResponse
 import me.tigrao.catalog.movies.data.api.model.OwnerResponse
 import me.tigrao.catalog.movies.data.api.model.MovieListResponse
 import me.tigrao.catalog.movies.data.api.model.MovieListItemResponse
+import me.tigrao.catalog.movies.data.api.model.ScheduleResponse
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
+import me.tigrao.catalog.movies.presentation.model.RepoAction
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -15,70 +19,41 @@ class FetchMovieListSuccessMapperTest {
     @Test
     fun subject_withAllParameter_returnCorrect() {
         val result = subject.mapFrom(
-            from = MovieListResponse(
-                totalCount = 1,
-                items = listOf(
-                    MovieListItemResponse(
-                        id = 13,
-                        name = "mock-name",
-                        description = "mock-description",
-                        owner = OwnerResponse(
-                            avatar = "http://google.com",
-                            login = "mock name",
-                        ),
-                        forks = 31,
-                        stars = 445,
-                    )
-                ),
-            )
-        )
-
-        val expected = MovieListModel(
-            data = listOf(
-                MovieListDataModel(
-                    image = "http://google.com",
-                    title = "mock-name",
-                    author = "mock name",
-                    stars = 445,
-                    forks = 31,
-                    description = "mock-description",
+            from = listOf(
+                MovieListItemResponse(
+                    id = 13,
+                    name = "mock-name",
+                    genres = listOf("terror", "action"),
+                    summary = "summary mock",
+                    image = ImageResponse(
+                        medium = "medium image",
+                        original = "original image",
+                    ),
+                    schedule = ScheduleResponse(
+                        time = "22:00",
+                        days = listOf("Monday", "Thursday")
+                    ),
+                    status = "Ended",
                 )
-            ),
-        )
-
-        assertEquals(expected, result)
-    }
-
-    @Test
-    fun subject_withNullDescriptionParameter_returnCorrect() {
-        val result = subject.mapFrom(
-            from = MovieListResponse(
-                totalCount = 1,
-                items = listOf(
-                    MovieListItemResponse(
-                        id = 13,
-                        name = "mock-name",
-                        description = null,
-                        owner = OwnerResponse(
-                            avatar = "http://google.com",
-                            login = "mock name",
-                        ),
-                        forks = 31,
-                        stars = 445,
-                    )
-                ),
             )
         )
 
         val expected = MovieListModel(
             data = listOf(
                 MovieListDataModel(
-                    image = "http://google.com",
+                    image = "medium image",
                     title = "mock-name",
-                    author = "mock name",
-                    stars = 445,
-                    forks = 31,
-                    description = "",
+                    author = "Ended",
+                    description = "summary mock",
+                    action = RepoAction.OpenDetail(
+                        data = MovieDetailArgs(
+                            id = 13L,
+                            name = "mock-name",
+                            image = "original image",
+                            genreList = listOf("terror", "action"),
+                            summary = "summary mock",
+                        )
+                    )
                 )
             ),
         )
