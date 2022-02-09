@@ -5,7 +5,7 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import org.koin.android.ext.android.inject
 
-class MainActivity: AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val navigator = AppNavigator(this, R.id.container)
 
     private val navigatorHolder by inject<NavigatorHolder>()
@@ -19,5 +19,4 @@ class MainActivity: AppCompatActivity(R.layout.activity_main) {
         navigatorHolder.removeNavigator()
         super.onPause()
     }
-
 }
