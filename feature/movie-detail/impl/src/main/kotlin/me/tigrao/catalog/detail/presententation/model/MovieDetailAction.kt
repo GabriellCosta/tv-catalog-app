@@ -5,6 +5,4 @@ import me.tigrao.catalog.infra.action.dispatcher.ViewAction
 sealed interface MovieDetailAction : ViewAction {
 
     object TryAgain : MovieDetailAction
-
-    data class EpisodeClickAction(val id: Long) : MovieDetailAction
 }
