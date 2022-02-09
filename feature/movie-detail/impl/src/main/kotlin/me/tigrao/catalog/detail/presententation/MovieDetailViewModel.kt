@@ -28,15 +28,8 @@ internal class MovieDetailViewModel(
         fetchEpisodeList()
     }
 
-    override fun dispatch(action: MovieDetailAction) {
-        when (action) {
-            is MovieDetailAction.EpisodeClickAction -> TODO()
-            MovieDetailAction.TryAgain -> tryAgain()
-        }
-    }
-
-    private fun tryAgain() {
-        fetchEpisodeList()
+    override fun dispatch(action: MovieDetailAction) = when (action) {
+        MovieDetailAction.TryAgain -> fetchEpisodeList()
     }
 
     private fun fetchEpisodeList() {
