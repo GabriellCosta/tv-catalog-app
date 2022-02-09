@@ -41,7 +41,7 @@ which problem's we should handle on the UI
      - Due to time I decided to not create the final screen where I should display the episode info,
      but I make every episode item on the movie detail screen have the information needed
 
-     - To validate if everything is ok I use Githubgs Action as my CI
+     - To validate if everything is ok I use Github Action as my CI
 
 ## Improvement's
 
