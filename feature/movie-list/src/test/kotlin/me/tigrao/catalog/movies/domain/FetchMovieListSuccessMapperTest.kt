@@ -8,7 +8,7 @@ import me.tigrao.catalog.movies.domain.mapper.FetchMovieListSuccessMapper
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
 import me.tigrao.catalog.movies.presentation.model.MovieListAction
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class FetchMovieListSuccessMapperTest {
