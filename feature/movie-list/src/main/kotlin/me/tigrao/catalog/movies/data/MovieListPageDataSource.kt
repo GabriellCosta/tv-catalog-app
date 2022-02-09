@@ -27,7 +27,7 @@ internal class MovieListPageDataSource(
             page = nextPageNumber,
         )
 
-        val nextKey = if(query.isNotEmpty()) {
+        val nextKey = if (query.isNotEmpty()) {
             null
         } else {
             nextPageNumber + 1

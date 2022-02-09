@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.stateViewModel
-import org.koin.core.parameter.parametersOf
 
 fun <T> Fragment.getArgs() = BundleKeyArgFactory.get<T>(requireArguments())
 
