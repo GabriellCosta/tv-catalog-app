@@ -12,7 +12,7 @@ internal data class EpisodeListResponse(
     val summary: String,
 )
 
-//TODO: THIS ONE IS DUPLICATED
+// TODO: THIS ONE IS DUPLICATED
 @JsonClass(generateAdapter = true)
 internal data class ImageResponse(
     val medium: String,

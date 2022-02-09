@@ -7,7 +7,7 @@ import me.tigrao.tv.catalog.designsystem.viewstate.ButtonViewArg
 import me.tigrao.tv.catalog.designsystem.viewstate.StateViewArg
 import me.tigrao.tv.catalog.designsystem.viewstate.StateViewType
 
-//TODO: COULD I MERGE BOTH STATE VIEW FACTORY
+// TODO: COULD I MERGE BOTH STATE VIEW FACTORY
 class MovieDetailStateViewFactory(
     private val resources: Resources
 ) {
@@ -31,4 +31,3 @@ class MovieDetailStateViewFactory(
             )
         )
 }
-

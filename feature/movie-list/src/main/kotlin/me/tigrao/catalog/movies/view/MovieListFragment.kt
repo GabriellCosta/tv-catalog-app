@@ -122,7 +122,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list), StateViewActio
     private fun tryAgain() {
         repoAdapter.retry()
 
-        //TODO: Should I move this to the VM
+        // TODO: Should I move this to the VM
         if (binder.state.isVisible) {
             binder.state.isVisible = false
             binder.loadingRepo.isVisible = true

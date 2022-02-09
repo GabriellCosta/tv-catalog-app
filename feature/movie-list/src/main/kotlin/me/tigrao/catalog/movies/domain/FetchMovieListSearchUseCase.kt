@@ -9,8 +9,7 @@ import me.tigrao.catalog.movies.domain.model.MovieListErrorModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
 
 internal interface FetchMovieListSearchUseCase {
-    suspend operator fun invoke(parameter: FetchMovieListParameters)
-            : ResultDomain<MovieListModel, MovieListErrorModel>
+    suspend operator fun invoke(parameter: FetchMovieListParameters): ResultDomain<MovieListModel, MovieListErrorModel>
 }
 
 internal class FetchMovieListSearchUseCaseDefault(
@@ -18,8 +17,7 @@ internal class FetchMovieListSearchUseCaseDefault(
     private val success: FetchMovieListSearchSuccessMapper,
     private val error: FetchMovieListErrorMapper,
 ) : FetchMovieListSearchUseCase {
-    override suspend fun invoke(parameter: FetchMovieListParameters)
-            : ResultDomain<MovieListModel, MovieListErrorModel> {
+    override suspend fun invoke(parameter: FetchMovieListParameters): ResultDomain<MovieListModel, MovieListErrorModel> {
         return callApi {
             api.searchMovieList(
                 query = parameter.query,

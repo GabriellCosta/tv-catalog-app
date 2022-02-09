@@ -34,7 +34,6 @@ internal class EpisodeModelToModelUiMapper(
                     image = episodesModel.image,
                 )
             })
-
         }
         return result.toImmutableList()
     }

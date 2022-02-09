@@ -8,7 +8,7 @@ internal data class MovieListItemResponse(
     val name: String,
     val image: ImageResponse,
     val summary: String,
-    val schedule : ScheduleResponse,
+    val schedule: ScheduleResponse,
     val genres: List<String>,
     val status: String,
 )

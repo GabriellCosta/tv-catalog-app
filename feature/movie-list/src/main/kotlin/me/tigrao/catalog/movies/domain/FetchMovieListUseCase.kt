@@ -1,8 +1,6 @@
 package me.tigrao.catalog.movies.domain
 
 import deb.tigrao.catalog.infra.api.ResultDomain
-import deb.tigrao.catalog.infra.api.callApi
-import me.tigrao.catalog.movies.data.api.MovieListApi
 import me.tigrao.catalog.movies.domain.model.MovieListErrorModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
 
