@@ -1,7 +1,7 @@
 package me.tigrao.catalog.movies.data.api
 
 import me.tigrao.catalog.movies.data.api.model.MovieListItemResponse
-import me.tigrao.catalog.movies.data.api.model.MovieListSearchItemResponse
+import me.tigrao.catalog.movies.data.api.model.MovieListItemSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -16,5 +16,5 @@ internal interface MovieListApi {
     suspend fun searchMovieList(
         @Query("q") query: String,
         @Query("page") page: Int
-    ): List<MovieListSearchItemResponse>
+    ): List<MovieListItemSearchResponse>
 }
