@@ -66,7 +66,7 @@ jobs:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
 
       - name: Build app
-      run: ./gradlew app:assembleRelease
+        run: ./gradlew app:assembleRelease
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2.2.4
@@ -90,5 +90,5 @@ jobs:
         with:
           tag: "${{ steps.version.outputs.app_version_name }}"
           name: "${{ steps.version.outputs.app_version_name }}"
-          artifacts: "app/build/outputs/bundle/release/app-release.aab,app/build/outputs/mapping/release/*.txt"
+          artifacts: "app/build/outputs/apk/release/app-release.apk,app/build/outputs/mapping/release/*.txt"
           token: ${{ secrets.GITHUB_TOKEN }}
