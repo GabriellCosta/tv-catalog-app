@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="movie_detail_schedule">Show Schedule: %s at %s</string>
+
     <string name="movie_detail_try_again">Tentar novamente</string>
     <string name="movie_detail_episode_info">Season: %s | Ep number: #%d</string>
 

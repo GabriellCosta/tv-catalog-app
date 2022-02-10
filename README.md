@@ -48,3 +48,10 @@ which problem's we should handle on the UI
 - Instead of using gradle buildSrc folder I would update to use a plugin, also move the dependencies
 to the core package, so with this I can avoid things like `dependencie.Depdencies` that is bad to read.
 Creating a plugin module would require more time than creating a easily buildSrc folder
+
+- I wrote some TODOs along with the code of thing to change
+
+- The Movie Detail public module should be a pure kotlin module, on the hurry a mae what is easier that
+is convert it to a android module and move the parcelable to it, one approach I would like to
+implement is add a fragment factory for my fragment and pass the parameter's as a constructor parameter
+for the fragment, also I would need to test if this could lead to some problems with android life cycle

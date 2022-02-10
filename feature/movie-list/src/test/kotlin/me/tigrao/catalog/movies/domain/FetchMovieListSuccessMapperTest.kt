@@ -1,15 +1,18 @@
 package me.tigrao.catalog.movies.domain
 
 import me.tigrao.catalog.detail.view.MovieDetailArgs
+import me.tigrao.catalog.detail.view.ScheduleArgs
 import me.tigrao.catalog.movies.data.api.model.ImageResponse
 import me.tigrao.catalog.movies.data.api.model.MovieListItemResponse
 import me.tigrao.catalog.movies.data.api.model.ScheduleResponse
 import me.tigrao.catalog.movies.domain.mapper.FetchMovieListSuccessMapper
 import me.tigrao.catalog.movies.domain.model.MovieListDataModel
 import me.tigrao.catalog.movies.domain.model.MovieListModel
+import me.tigrao.catalog.movies.domain.model.ScheduleModel
 import me.tigrao.catalog.movies.presentation.model.MovieListAction
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import java.util.concurrent.Executors
 
 class FetchMovieListSuccessMapperTest {
 
@@ -44,6 +47,10 @@ class FetchMovieListSuccessMapperTest {
                     title = "mock-name",
                     author = "Ended",
                     description = "summary mock",
+                    schedule = ScheduleModel(
+                        time = "22:00",
+                        weekDay = listOf("Monday", "Thursday"),
+                    ),
                     action = MovieListAction.OpenDetail(
                         data = MovieDetailArgs(
                             id = 13L,
@@ -51,6 +58,10 @@ class FetchMovieListSuccessMapperTest {
                             image = "original image",
                             genreList = listOf("terror", "action"),
                             summary = "summary mock",
+                            schedule = ScheduleArgs(
+                                time = "22:00",
+                                weekDay = listOf("Monday", "Thursday"),
+                            )
                         )
                     )
                 )

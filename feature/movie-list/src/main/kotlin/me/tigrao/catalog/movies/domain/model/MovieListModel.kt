@@ -11,5 +11,11 @@ internal data class MovieListDataModel(
     val title: String,
     val author: String,
     val description: String,
+    val schedule: ScheduleModel,
     val action: MovieListAction,
+)
+
+internal data class ScheduleModel(
+    val time: String,
+    val weekDay: List<String>,
 )
