@@ -12,7 +12,6 @@ import me.tigrao.catalog.movies.domain.model.ScheduleModel
 import me.tigrao.catalog.movies.presentation.model.MovieListAction
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.util.concurrent.Executors
 
 class FetchMovieListSuccessMapperTest {
 

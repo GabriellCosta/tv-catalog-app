@@ -56,7 +56,7 @@ internal class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail),
             title.text = state.data.name
             genre.text = state.data.genreList.toString()
 
-            //TODO: THIS SHOULD be done on the ViewModel
+            // TODO: THIS SHOULD be done on the ViewModel
             if (state.data.schedule.weekDay.isNotEmpty()) {
                 schedule.text = getString(
                     R.string.movie_detail_schedule,
@@ -70,7 +70,6 @@ internal class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail),
             } else {
                 schedule.isVisible = false
             }
-
 
             summary.text =
                 HtmlCompat.fromHtml(state.data.summary, HtmlCompat.FROM_HTML_MODE_COMPACT)
